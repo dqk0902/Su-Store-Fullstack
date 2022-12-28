@@ -39,7 +39,10 @@ const productSlice = createSlice({
         state.sort((a, b) => b.title.localeCompare(a.title));
       }
     },
-  } /* manage sync process */,
+    deleteItem: (state, action: PayloadAction<number>) => {
+      return state.filter((item) => item.id !== action.payload);
+    },
+  },
   extraReducers: (build) => {
     build.addCase(fetchAllProducts.fulfilled, (state, action) => {
       if (action.payload && "message" in action.payload) {
@@ -68,5 +71,5 @@ const productSlice = createSlice({
   },
 });
 const productReducer = productSlice.reducer;
-export const { sortByName } = productSlice.actions;
+export const { sortByName, deleteItem } = productSlice.actions;
 export default productReducer;

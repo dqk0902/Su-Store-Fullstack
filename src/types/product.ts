@@ -16,3 +16,4 @@ export interface CreateProduct {
   categoryId: number;
   images: string[];
 }
+export type ProductId = number;
