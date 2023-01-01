@@ -36,6 +36,11 @@ const Root = () => {
                 Cart
               </Link>
             </li>
+            <li className="navbar-itme">
+              <Link to="login" className="navbar-links">
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

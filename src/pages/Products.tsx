@@ -9,6 +9,7 @@ import { fetchAllProducts } from "../redux/reducer/productReducer";
 import { Container, Grid } from "@mui/material";
 import { Product } from "../types/product";
 import { addToCart } from "../redux/reducer/cartSlice";
+import { fetchAllCategories } from "../redux/categoryReducer";
 
 const useStyles = makeStyles({
   root: {
@@ -17,19 +18,29 @@ const useStyles = makeStyles({
     padding: "15px",
     margin: "32px",
     textAlign: "center",
-
+    borderRadius: 15,
+  },
+  category: {
+    maxWidth: 180,
+    maxHeight: 200,
+    padding: "10px",
+    margin: "20px",
+    textAlign: "center",
     borderRadius: 15,
   },
 });
 const Products = (props: any) => {
   const [search, setSearch] = useState("");
+  const categories = useAppSelector((state) => state.categoriesReducer);
   const products = useAppSelector((state) =>
     state.productReducer.filter((item) => {
       return item.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
     })
   );
   const dispatch = useAppDispatch();
-
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+  }, []);
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, []);
@@ -37,6 +48,32 @@ const Products = (props: any) => {
   const classes = useStyles(props);
   return (
     <div>
+      <Container>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {categories.slice(0, 5).map((category) => (
+            <Grid key={category.id}>
+              <Card className={classes.category}>
+                <CardMedia
+                  component="img"
+                  alt="img not found"
+                  height="140"
+                  image={category.image}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {category.name}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
       <div className="flex items-center justify-center mt-10">
         <div className="flex border border-pink-200 rounded">
           <input
