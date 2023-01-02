@@ -1,28 +1,23 @@
 import React, { ChangeEvent, useState } from "react";
-import axios from "axios";
-import { useAppDispatch } from "../hooks/reduxHook";
 import { useNavigate } from "react-router-dom";
-import { getUserWithToken } from "../redux/reducer/userReducer";
-export interface LoginType {
+import axios from "axios";
+export interface RegisterType {
   email: string;
   password: string;
+  name: string;
 }
-
-const Login = () => {
+const Register = () => {
   const nav = useNavigate();
-  const dispatch = useAppDispatch();
-  const [login, setLogin] = useState<LoginType>({
+  const onNavigate = () => {
+    nav("/login");
+  };
+  const [register, setRegister] = useState<RegisterType>({
     email: "",
     password: "",
+    name: "",
   });
-  const userState = {
-    name: "Please Log In",
-    avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-    role: "UNKNOWN",
-    email: "",
-  };
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLogin((prev) => {
+    setRegister((prev) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -32,33 +27,27 @@ const Login = () => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://api.escuelajs.co/api/v1/auth/login",
-        {
-          email: login.email,
-          password: login.password,
-        }
-      );
-      console.log(res.data);
-      if (res.data) {
-        nav("/products");
+      const res = await axios.post("https://api.escuelajs.co/api/v1/users/", {
+        email: register.email,
+        password: register.password,
+        name: register.name,
+        avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      });
+      console.log(res);
+      if (res.statusText === "Created") {
+        nav("/login");
+        alert("Sign up succesfull");
       }
-      localStorage.setItem("access_token", res.data.access_token);
-      dispatch(getUserWithToken(localStorage.getItem("access_token")));
-      localStorage.setItem("userState", JSON.stringify(userState));
     } catch (e) {
       console.log(e);
     }
   };
-  const onNavigate = () => {
-    nav("/register");
-  };
   return (
     <div>
       <div className="flex flex-col items-center justify-center overflow-hidden mt-12">
-        <div className="w-full p-6 bg-white rounded-md shadow-xl lg:max-w-xl ">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl ">
           <h1 className="text-3xl font-semibold text-center text-pink-300 uppercase">
-            Sign in
+            Sign up
           </h1>
           <form className="mt-6">
             <div className="mb-2">
@@ -83,15 +72,23 @@ const Login = () => {
                 className="block w-full px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-            <a href="#" className="text-xs text-pink-300 hover:underline">
-              Forget Password?
-            </a>
+            <div className="mb-2">
+              <label className="block text-sm font-semibold text-gray-800">
+                Name
+              </label>
+              <input
+                onChange={onChange}
+                type="name"
+                name="name"
+                className="block w-full px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
             <div className="mt-6">
               <button
                 onClick={onSubmit}
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-pink-300 rounded-md hover:bg-pink-400 focus:outline-none focus:bg-pink-300"
               >
-                Login
+                Submit
               </button>
             </div>
           </form>
@@ -133,12 +130,12 @@ const Login = () => {
 
           <p className="mt-8 text-xs font-light text-center text-gray-700">
             {" "}
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <button
               onClick={onNavigate}
               className="font-medium text-pink-300 hover:underline"
             >
-              Sign up
+              Sign in
             </button>
           </p>
         </div>
@@ -147,4 +144,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

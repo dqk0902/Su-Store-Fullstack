@@ -123,6 +123,9 @@ const Cart = (props: any) => {
                 ${cartTotal()}
               </p>
             </div>
+            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-pink-300 rounded-md hover:bg-pink-400 focus:outline-none focus:bg-pink-300">
+              Pay now
+            </button>
           </div>
         </div>
       </Container>
