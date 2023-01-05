@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 import { CreateProduct, Product } from "../../types/product";
 const initialState: Product[] = [];
-
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
@@ -54,9 +53,6 @@ const productSlice = createSlice({
         state.sort((a, b) => b.price - a.price);
       }
     },
-    sortByCategory: (state, action) => {
-      state.filter = action.payload;
-    },
   },
   extraReducers: (build) => {
     build.addCase(fetchAllProducts.fulfilled, (state, action) => {
@@ -66,7 +62,6 @@ const productSlice = createSlice({
         return state;
       }
       return action.payload;
-      //setState(action.payload)
     });
     build.addCase(fetchAllProducts.rejected, (state, action) => {
       console.log("error in fetching data");
@@ -86,6 +81,5 @@ const productSlice = createSlice({
   },
 });
 const productReducer = productSlice.reducer;
-export const { sortByName, deleteItem, sortByPrice, sortByCategory } =
-  productSlice.actions;
+export const { sortByName, deleteItem, sortByPrice } = productSlice.actions;
 export default productReducer;

@@ -7,7 +7,6 @@ import { CardMedia } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook";
 import {
   fetchAllProducts,
-  sortByCategory,
   sortByName,
   sortByPrice,
 } from "../redux/reducer/productReducer";
@@ -38,17 +37,19 @@ const useStyles = makeStyles({
 const Products = (props: any) => {
   const [search, setSearch] = useState("");
   const categories = useAppSelector((state) => state.categoriesReducer);
-  const products = useAppSelector((state) => {
-    const all = state.productReducer;
-    const filterId = state.productReducer;
-    if (filterId === null) {
-      return all.filter((item) => {
+  const [categoryId, setCategoryId] = useState<number>(0);
+  const products = useAppSelector((state) =>
+    state.productReducer.filter((item) => {
+      if (categoryId) {
+        return (
+          item.category.id === categoryId &&
+          item.title.toLowerCase().indexOf(search.toLowerCase()) > -1
+        );
+      } else {
         return item.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
-      });
-    } else {
-      return all.filter((item) => item.category.id === filterId);
-    }
-  });
+      }
+    })
+  );
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -127,7 +128,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => dispatch(sortByCategory(1))}
+                      onClick={() => setCategoryId(1)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Clothes
@@ -137,7 +138,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => dispatch(sortByCategory(2))}
+                      onClick={() => setCategoryId(2)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Electronics
@@ -146,21 +147,30 @@ const Products = (props: any) => {
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <button className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <button
+                      onClick={() => setCategoryId(3)}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       Funitures
                     </button>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <button className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <button
+                      onClick={() => setCategoryId(4)}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       Shoes
                     </button>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <button className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <button
+                      onClick={() => setCategoryId(5)}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       Others
                     </button>
                   )}

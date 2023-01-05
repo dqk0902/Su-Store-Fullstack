@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   category: Category;
   images: string[];
+  filterId: null;
 }
 
 export interface CreateProduct {
