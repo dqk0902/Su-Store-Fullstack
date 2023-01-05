@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook";
-import { logout } from "../redux/reducer/userReducer";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
+import { logout } from "../../redux/reducer/userReducer";
 export interface UserInfo {
   id: string;
   avatar: string;

@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
-import { useAppDispatch } from "../hooks/reduxHook";
+import { useAppDispatch } from "../../hooks/reduxHook";
 import { useNavigate } from "react-router-dom";
-import { getUserWithToken } from "../redux/reducer/userReducer";
+import { getUserWithToken } from "../../redux/reducer/userReducer";
+
 export interface LoginType {
   email: string;
   password: string;
 }
-
 const Login = () => {
   const nav = useNavigate();
   const dispatch = useAppDispatch();
@@ -15,7 +15,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin((prev) => {
       return {
@@ -77,9 +76,12 @@ const Login = () => {
                 className="block w-full px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-            <a href="#" className="text-xs text-pink-300 hover:underline">
+            <button
+              onClick={onNavigate}
+              className="text-xs text-pink-300 hover:underline"
+            >
               Forget Password?
-            </a>
+            </button>
             <div className="mt-6">
               <button
                 onClick={onSubmit}

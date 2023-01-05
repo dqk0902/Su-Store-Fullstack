@@ -6,7 +6,7 @@ export interface CartProduct extends Product {
 }
 const initialState: CartProduct[] = [];
 export const cartSlice = createSlice({
-  name: "cart",
+  name: "cartSlice",
   initialState: initialState,
   reducers: {
     addToCart: (state, action) => {

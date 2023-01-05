@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import "../styles/Root.css";
+import "../../styles/root.css";
 
 const Root = () => {
   return (

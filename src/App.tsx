@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./pages/Cart";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
-import Product from "./pages/Product";
-import Products from "./pages/Products";
-import Profile from "./pages/Profile";
-import Register from "./pages/Register";
-import Root from "./pages/Root";
+import Cart from "./pages/CartPage/Cart";
+import Home from "./pages/HomePage/Home";
+import Login from "./pages/LoginPage/Login";
+import NotFound from "./pages/NotFound/NotFound";
+import Product from "./pages/ProductPage/Product";
+import Products from "./pages/ProductPage/Products";
+import Profile from "./pages/ProfilePage/Profile";
+import Register from "./pages/RegisterPage/Register";
+import Root from "./pages/RootPage/Root";
 const App = () => {
   return (
     <BrowserRouter>
