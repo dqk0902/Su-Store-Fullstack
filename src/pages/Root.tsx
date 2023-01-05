@@ -8,7 +8,7 @@ const Root = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <a href="./" id="navbar-logo">
-            E-Commerce
+            Su's Store
           </a>
           <div className="navbar-toggle" id="mobile-menu">
             <span className="bar"></span>

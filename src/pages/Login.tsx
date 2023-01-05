@@ -15,12 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const userState = {
-    name: "Please Log In",
-    avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-    role: "UNKNOWN",
-    email: "",
-  };
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin((prev) => {
       return {
@@ -29,7 +24,7 @@ const Login = () => {
       };
     });
   };
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     try {
       const res = await axios.post(
@@ -45,7 +40,6 @@ const Login = () => {
       }
       localStorage.setItem("access_token", res.data.access_token);
       dispatch(getUserWithToken(localStorage.getItem("access_token")));
-      localStorage.setItem("userState", JSON.stringify(userState));
     } catch (e) {
       console.log(e);
     }

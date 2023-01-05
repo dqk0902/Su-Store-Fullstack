@@ -25,21 +25,6 @@ export const getUserWithToken = createAsyncThunk(
   }
 );
 
-export interface UpdateUser {
-  id: number;
-  changes: UpdateUserData;
-}
-export const updateUserInformation = createAsyncThunk(
-  "updateUserInformation",
-  async (data: UpdateUser) => {
-    const { id, changes } = data;
-    return await axios.put(
-      `https://api.escuelajs.co/api/v1/users/${id}`,
-      changes
-    );
-  }
-);
-
 export interface UserProfile {
   avatar: string;
   creationAt: string;
@@ -60,6 +45,7 @@ const userSlice = createSlice({
     logout(state) {
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
+      localStorage.removeItem("userState");
       return (state = null);
     },
   },

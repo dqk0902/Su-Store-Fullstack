@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 import { CreateProduct, Product } from "../../types/product";
 const initialState: Product[] = [];
+
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
@@ -14,6 +15,7 @@ export const fetchAllProducts = createAsyncThunk(
     }
   }
 );
+
 export const createProduct = createAsyncThunk(
   "createProduct",
   async (product: CreateProduct) => {
@@ -32,8 +34,8 @@ const productSlice = createSlice({
   name: "productSlice",
   initialState: initialState,
   reducers: {
-    sortByName: (state, action: PayloadAction<"asc" | "desc">) => {
-      if (action.payload === "asc") {
+    sortByName: (state, action: PayloadAction<"Asc" | "Desc">) => {
+      if (action.payload === "Asc") {
         state.sort((a, b) => a.title.localeCompare(b.title));
       } else {
         state.sort((a, b) => b.title.localeCompare(a.title));
@@ -41,6 +43,19 @@ const productSlice = createSlice({
     },
     deleteItem: (state, action: PayloadAction<number>) => {
       return state.filter((item) => item.id !== action.payload);
+    },
+    sortByPrice: (
+      state,
+      action: PayloadAction<"Highest Price" | "Lowest Price">
+    ) => {
+      if (action.payload === "Lowest Price") {
+        state.sort((a, b) => a.price - b.price);
+      } else {
+        state.sort((a, b) => b.price - a.price);
+      }
+    },
+    sortByCategory: (state, action) => {
+      state.filter = action.payload;
     },
   },
   extraReducers: (build) => {
@@ -71,5 +86,6 @@ const productSlice = createSlice({
   },
 });
 const productReducer = productSlice.reducer;
-export const { sortByName, deleteItem } = productSlice.actions;
+export const { sortByName, deleteItem, sortByPrice, sortByCategory } =
+  productSlice.actions;
 export default productReducer;

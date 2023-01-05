@@ -48,7 +48,7 @@
   height: 80px;
 }
 .navbar-links {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 1.5px;
   color: white;
@@ -84,11 +84,11 @@
     transition: all 0.5s ease;
     height: 50vh;
     z-index: -1;
-    background: red;
+    background: pink;
   }
 
   .navbar-menu.active {
-    background: red;
+    background: pink;
     top: 100%;
     opacity: 1;
     transition: all 0.5s ease;
