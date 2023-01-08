@@ -5,17 +5,13 @@ import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { CardMedia } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
-import {
-  fetchAllProducts,
-  sortByName,
-  sortByPrice,
-} from "../../redux/reducer/productReducer";
+import { fetchAllProducts } from "../../redux/reducer/productReducer";
 import { Container, Grid } from "@mui/material";
-import { addToCart } from "../../redux/reducer/cartReducer";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Category from "./Category/Category";
 import Sort from "./Sorting/Sort";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -42,9 +38,8 @@ const Products = (props: any) => {
       }
     })
   );
-
+  const nav = useNavigate();
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
@@ -182,8 +177,8 @@ const Products = (props: any) => {
                   <Typography gutterBottom variant="h5" component="h2">
                     ${product.price}
                   </Typography>
-                  <Button onClick={() => dispatch(addToCart(product))}>
-                    Add to Cart
+                  <Button onClick={() => nav(`/products/${product.id}`)}>
+                    Details
                   </Button>
                 </CardContent>
               </Card>
