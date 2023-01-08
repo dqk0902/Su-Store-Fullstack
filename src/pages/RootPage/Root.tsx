@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import "../../styles/root.css";
+import "../../styles/Root.css";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 const Root = () => {
   return (
