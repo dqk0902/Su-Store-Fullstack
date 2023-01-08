@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import "../../styles/root.css";
-
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 const Root = () => {
   return (
     <div>
@@ -27,8 +27,10 @@ const Root = () => {
             </Link>
           </li>
           <li>
-            <Link to="cart" className="navbar-links">
-              Cart
+            <Link to="cart" className="cart-links">
+              <span>
+                <ShoppingCartCheckoutIcon />
+              </span>
             </Link>
           </li>
           <li>

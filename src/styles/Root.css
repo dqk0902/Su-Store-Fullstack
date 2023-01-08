@@ -19,6 +19,12 @@ body {
   height: 50px;
   padding: 1em;
 }
+.cart-links {
+  cursor: pointer;
+}
+.cart-links {
+  color: white;
+}
 
 .menu {
   display: flex;
