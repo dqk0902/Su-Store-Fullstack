@@ -38,6 +38,11 @@ const Root = () => {
               Login
             </Link>
           </li>
+          <li>
+            <Link to="create" className="navbar-links">
+              Create Product
+            </Link>
+          </li>
         </ul>
       </section>
       <Outlet />

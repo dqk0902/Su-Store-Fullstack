@@ -7,7 +7,7 @@ const Sort = () => {
   const dispatch = useAppDispatch();
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative inline-block text-left ">
         <div>
           <Menu.Button className="text-white bg-pink-300 hover:bg-pink-400  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
             Sort by name

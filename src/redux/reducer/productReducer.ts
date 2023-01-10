@@ -23,6 +23,7 @@ export const createProduct = createAsyncThunk(
         "https://api.escuelajs.co/api/v1/products/",
         product
       );
+      alert("Create Product successful");
       return response.data;
     } catch (e) {
       console.log(e);

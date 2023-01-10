@@ -1,10 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-export interface UpdateUserData {
-  name: string;
-  password: string;
-  email: string;
-}
 
 export const getUserWithToken = createAsyncThunk(
   "getUserWithToken",
