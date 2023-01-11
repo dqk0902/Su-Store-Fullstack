@@ -5,13 +5,17 @@ import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { CardMedia } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
-import { fetchAllProducts } from "../../redux/reducer/productReducer";
+import {
+  deleteItem,
+  fetchAllProducts,
+} from "../../redux/reducer/productReducer";
 import { Container, Grid } from "@mui/material";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Category from "./Category/Category";
 import Sort from "./Sorting/Sort";
 import { useNavigate } from "react-router-dom";
+import EditProduct from "../EditProduct/EditProduct";
 
 const useStyles = makeStyles({
   root: {
@@ -38,6 +42,12 @@ const Products = (props: any) => {
       }
     })
   );
+  const [isAdmin, setIsAdmin] = useState("");
+  useEffect(() => {
+    const userRole = JSON.parse(localStorage.getItem("user") || "");
+    userRole && setIsAdmin(userRole.role);
+  }, []);
+
   const nav = useNavigate();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -178,6 +188,11 @@ const Products = (props: any) => {
                   <Button onClick={() => nav(`/products/${product.id}`)}>
                     Details
                   </Button>
+                  {isAdmin === "admin" && (
+                    <Button onClick={() => dispatch(deleteItem(product.id))}>
+                      Delete
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </Grid>

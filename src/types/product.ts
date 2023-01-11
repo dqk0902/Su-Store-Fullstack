@@ -17,4 +17,10 @@ export interface CreateProduct {
   categoryId: number;
   images: string[];
 }
+export interface UpdateProduct {
+  title: string;
+  price: number;
+  description: string;
+  id: number;
+}
 export type ProductId = number;

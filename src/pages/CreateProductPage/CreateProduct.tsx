@@ -18,7 +18,7 @@ const CreateProduct = () => {
     categoryId: 0,
     images: [],
   });
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: any) => {
     setProduct((prev) => {
       return {
         ...prev,
@@ -34,7 +34,7 @@ const CreateProduct = () => {
       };
     });
   };
-  console.log(product);
+
   const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     dispatch(createProduct(product));
@@ -73,9 +73,8 @@ const CreateProduct = () => {
               <label className="block text-sm font-semibold text-gray-800">
                 Description
               </label>
-              <input
+              <textarea
                 onChange={onChange}
-                type="description"
                 name="description"
                 className="block w-full h-32 px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />

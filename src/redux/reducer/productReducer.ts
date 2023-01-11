@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
-import { CreateProduct, Product } from "../../types/product";
+import { CreateProduct, Product, UpdateProduct } from "../../types/product";
 const initialState: Product[] = [];
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
@@ -24,6 +24,21 @@ export const createProduct = createAsyncThunk(
         product
       );
       alert("Create Product successful");
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const updateProduct = createAsyncThunk(
+  "updateProduct",
+  async (product: UpdateProduct) => {
+    try {
+      const response = await axios.put(
+        `https://api.escuelajs.co/api/v1/products/${product.id}`,
+        product
+      );
       return response.data;
     } catch (e) {
       console.log(e);
@@ -78,6 +93,12 @@ const productSlice = createSlice({
       } else {
         return state;
       }
+    });
+    build.addCase(updateProduct.fulfilled, (state, action) => {
+      const index = state.findIndex((item) => item.id === action.payload.id);
+      state[index].price = action.payload.price;
+      state[index].title = action.payload.title;
+      state[index].description = action.payload.description;
     });
   },
 });
