@@ -43,8 +43,17 @@ const Products = (props: any) => {
     })
   );
   const [isAdmin, setIsAdmin] = useState("");
+  const userState = {
+    name: "Please Log In",
+    avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    role: "UNKNOWN",
+    email: "",
+  };
+  localStorage.setItem("userState", JSON.stringify(userState));
   useEffect(() => {
-    const userRole = JSON.parse(localStorage.getItem("user") || "");
+    const userRole = JSON.parse(
+      localStorage.getItem("user") || localStorage.getItem("userState") || ""
+    );
     userRole && setIsAdmin(userRole.role);
   }, []);
 
