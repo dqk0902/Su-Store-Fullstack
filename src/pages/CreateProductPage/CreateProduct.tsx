@@ -1,17 +1,11 @@
 import React, { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../hooks/reduxHook";
 import { createProduct } from "../../redux/reducer/productReducer";
+import { CreateProductType } from "../../types/product";
 
-export interface createProduct {
-  title: string;
-  description: string;
-  price: number;
-  categoryId: number;
-  images: string[];
-}
 const CreateProduct = () => {
   const dispatch = useAppDispatch();
-  const [product, setProduct] = useState<createProduct>({
+  const [product, setProduct] = useState<CreateProductType>({
     title: "",
     description: "",
     price: 0,

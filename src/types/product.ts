@@ -10,7 +10,7 @@ export interface Product {
   filterId: null;
 }
 
-export interface CreateProduct {
+export interface CreateProductType {
   title: string;
   description: string;
   price: number;

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
-import { CreateProduct, Product, UpdateProduct } from "../../types/product";
+import { CreateProductType, Product, UpdateProduct } from "../../types/product";
 const initialState: Product[] = [];
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
@@ -17,7 +17,7 @@ export const fetchAllProducts = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   "createProduct",
-  async (product: CreateProduct) => {
+  async (product: CreateProductType) => {
     try {
       const response: AxiosResponse<Product, Product> = await axios.post(
         "https://api.escuelajs.co/api/v1/products/",

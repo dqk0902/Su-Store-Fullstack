@@ -24,59 +24,61 @@ You can take a look at the deployed project here: (https://dqk-e-commerce.netlif
 |
 │
 └───src
-    │   App.tsx
-    │   index.tsx
-    │   react-app-env.d.ts
-    |
-    |───assests
-    |     clothes.jpg
-    |
-    |───hooks
-    |      reduxHook.tsx
-    |
-    ├───pages
-    │   |───CartPage
-    │   │       CartLayout.tsx
-    │   │       Cart.tsx
-    │   │   
-    │   │
-    │   ├───CreateProductPage
-    │   │       CreateProduct.tsx
-    │   │
-    │   ├───EditProduct
-    │   │       EditProduct.tsx
-    │   │       
-    │   │───HomePage       
-    │   │       Home.tsx
-    │   │      
-    │   │───LoginPage       
-    │   │       Login.tsx
-    |   |
-    │   ├───RegisterPage
-    │   │       Register.tsx
-    │   │      
-    │   │───ProfilePage
-    |   |       Profile
-    |   |───RootPage
-    |   |       Root.tsx
-    |   | 
-    │   └───NotFound
-    │           NotFound
-    │
-    ├───redux
-    │   │   store.ts
-    │   │
-    │   └───reducers
-    │           cartReducer.ts
-    │           productReducer.ts
-    │           categoryReducer.ts
-    │           userReducer.ts
-    |
-    ├───styles
-    │       Home.css
-    │       Root.css
-    │
-    └───types
-            category.ts
-            product.ts
-            
+│      App.tsx
+│      index.tsx
+│      react-app-env.d.ts
+|
+|
+|
+|
+└───assests
+|       clothes.jpg
+|
+└───hooks
+|       reduxHook.tsx
+|
+├───pages
+│ └───CartPage
+│ │         CartLayout.tsx
+│ │         Cart.tsx
+│ │  
+│ │
+│ ├───CreateProductPage
+│ │         CreateProduct.tsx
+│ │     
+│ ├───EditProduct
+│ │         EditProduct.tsx
+│ │  
+│ │───HomePage  
+│ │         Home.tsx
+│ │  
+│ │───LoginPage  
+│ │         Login.tsx
+| |
+│ ├───RegisterPage
+│ │         Register.tsx
+│ │  
+│ │───ProfilePage
+| |         Profile
+| └───RootPage
+| |         Root.tsx
+| |
+│ └───NotFound
+│           NotFound
+│
+├───redux
+│ │     store.ts
+│ │
+│ └───reducers
+│          cartReducer.ts
+│          productReducer.ts
+│          categoryReducer.ts
+│          userReducer.ts
+|
+├───styles
+│      Home.css
+│      Root.css
+│
+└───types
+      category.ts
+      product.ts
