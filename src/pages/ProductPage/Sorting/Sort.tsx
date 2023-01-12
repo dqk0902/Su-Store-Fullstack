@@ -7,9 +7,9 @@ const Sort = () => {
   const dispatch = useAppDispatch();
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-left ">
+      <Menu as="div" className="relative inline-block text-left mb-12 ml-6">
         <div>
-          <Menu.Button className="text-white bg-pink-300 hover:bg-pink-400  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
+          <Menu.Button className="text-white bg-pink-300 hover:bg-pink-400 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
             Sort by name
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const Sort = () => {
           </Menu.Items>
         </Transition>
       </Menu>
-      <Menu as="div" className="relative inline-block text-left ml-2">
+      <Menu as="div" className="relative inline-block text-left ml-6 mt-12">
         <div>
           <Menu.Button className="text-white bg-pink-300 hover:bg-pink-400  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
             Sort by price

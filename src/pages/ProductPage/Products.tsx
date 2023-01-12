@@ -15,7 +15,6 @@ import { Menu, Transition } from "@headlessui/react";
 import Category from "./Category/Category";
 import Sort from "./Sorting/Sort";
 import { useNavigate } from "react-router-dom";
-import EditProduct from "../EditProduct/EditProduct";
 
 const useStyles = makeStyles({
   root: {
@@ -70,7 +69,7 @@ const Products = (props: any) => {
         <Category />
       </div>
       <div className="flex items-center justify-center mt-10 mb-24">
-        <Menu as="div" className="relative inline-block text-left mr-2">
+        <Menu as="div" className="relative inline-block text-left ">
           <Menu.Button className="text-white bg-pink-300 hover:bg-pink-400  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">
             Sort by category
             <svg
