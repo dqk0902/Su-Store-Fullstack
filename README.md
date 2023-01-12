@@ -19,5 +19,3 @@ You can take a look at the deployed project here: (https://dqk-e-commerce.netlif
 - run the project: `npm start`
 
 # Screenshot
-
-
