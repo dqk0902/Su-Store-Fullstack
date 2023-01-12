@@ -81,4 +81,8 @@ You can take a look at the deployed project here: (https://dqk-e-commerce.netlif
 │
 └───types
       category.ts
-      product.ts
+      product.ts!
+      
+      [React_Redux_App_-_Google_Chrome_2023-01-13_00-26-36_AdobeExpress](https://user-images.githubusercontent.com/103765293/212195428-0719f118-630a-4ce9-b752-7f66e53cd294.gif)
+
+
