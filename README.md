@@ -18,6 +18,5 @@ You can take a look at the deployed project here: (https://dqk-e-commerce.netlif
 - install dependencies: `npm install`
 - run the project: `npm start`
 
-# Screenshot
 
 
