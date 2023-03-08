@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "NETCoreDemo": {
+    "Ecommerce": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
