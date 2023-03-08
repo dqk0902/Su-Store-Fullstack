@@ -1,5 +1,5 @@
 using System.Net.Mime;
-namespace NETCoreDemo.Controllers;
+namespace Ecommerce.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 

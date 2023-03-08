@@ -1,4 +1,4 @@
-using NETCoreDemo.Services;
+using Ecommerce.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+
+builder.Services.AddSingleton<ICategoryService, FakeCategoryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
