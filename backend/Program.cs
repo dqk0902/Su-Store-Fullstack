@@ -9,7 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ICategoryService, FakeCategoryService>();
+builder.Services.AddScoped<ICategoryService, DbCategoryService>();
+builder.Services.AddScoped<IProductService, DbProductService>();
 
 var app = builder.Build();
 
