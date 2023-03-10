@@ -30,11 +30,12 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Create an index on Name using Fluent API
-        modelBuilder.Entity<Category>()
-            .HasIndex(c => c.Name);
-
         base.OnModelCreating(modelBuilder);
+        // Create an index on Name using Fluent API
+        modelBuilder.Entity<Product>()
+                    .HasOne(p => p.Category)
+                    .WithMany(c => c.Products)
+                    .HasForeignKey(p => p.CategoryId);
     }
 
     public DbSet<Category> Categories { get; set; } = null!;
