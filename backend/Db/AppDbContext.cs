@@ -3,8 +3,10 @@ namespace Ecommerce.Db;
 using Microsoft.EntityFrameworkCore;
 using Ecommerce.Models;
 using Npgsql;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 {
     // Static constructor which will be run ONCE
     static AppDbContext()
@@ -22,6 +24,7 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        base.OnConfiguring(optionsBuilder);
         var connString = _config.GetConnectionString("DefaultConnection");
         optionsBuilder
             .UseNpgsql(connString)
@@ -35,7 +38,9 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>()
                     .HasOne(p => p.Category)
                     .WithMany(c => c.Products)
-                    .HasForeignKey(p => p.CategoryId);
+                    .HasForeignKey(p => p.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.AddIdentityConfig();
     }
 
     public DbSet<Category> Categories { get; set; } = null!;
