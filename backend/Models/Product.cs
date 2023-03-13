@@ -9,6 +9,7 @@ public class Product : BaseModel
     public int Price { get; set; }
     public string? Description { get; set; }
     public string? Image { get; set; }
+    [NotMapped]
     public Category Category { get; set; } = null!;
     public int CategoryId { get; set; }
 }
