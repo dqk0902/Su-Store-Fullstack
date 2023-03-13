@@ -16,6 +16,7 @@ public class DbProductService : DbCrudService<Product, ProductDTO>, IProductServ
             .AsNoTracking()
             // Eager loading
             .Include(s => s.Category)
+            .Include(s => s.Order)
             .OrderByDescending(s => s.CreatedAt)
             .ToListAsync();
     }
@@ -29,6 +30,7 @@ public class DbProductService : DbCrudService<Product, ProductDTO>, IProductServ
         }
         // Explicit loading
         await _dbContext.Entry(product).Reference(s => s.Category).LoadAsync();
+        await _dbContext.Entry(product).Reference(s => s.Order).LoadAsync();
         return product;
     }
 }

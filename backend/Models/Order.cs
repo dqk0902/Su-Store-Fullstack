@@ -8,6 +8,8 @@ public class Order : BaseModel
     public int UserId { get; set; }
     public decimal TotalPrice { get; set; }
     public OrderStatus Status { get; set; }
+    [NotMapped]
+    public ICollection<Product> Products { get; set; } = null!;
     public enum OrderStatus
     {
         Pending,

@@ -12,4 +12,7 @@ public class Product : BaseModel
     [NotMapped]
     public Category Category { get; set; } = null!;
     public int CategoryId { get; set; }
+    [NotMapped]
+    public Order Order { get; set; } = null!;
+    public int OrderId { get; set; }
 }

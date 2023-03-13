@@ -10,5 +10,22 @@ public class DbOrderService : DbCrudService<Order, OrderDTO>, IOrderService
     public DbOrderService(AppDbContext dbContext) : base(dbContext)
     {
     }
-
+    public override async Task<ICollection<Order>> GetAllAsync()
+    {
+        return await _dbContext.Orders
+            .AsNoTracking()
+            .Include(s => s.Products)
+            .ToListAsync();
+    }
+    public override async Task<Order?> GetAsync(int id)
+    {
+        var order = await base.GetAsync(id);
+        if (order is null)
+        {
+            return null;
+        }
+        // Explicit loading
+        await _dbContext.Entry(order).Collection(c => c.Products).LoadAsync();
+        return order;
+    }
 }
