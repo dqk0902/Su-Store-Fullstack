@@ -67,6 +67,8 @@ artifacts/
 
 # dependencies
 frontend/node_modules
+frontend/.pnp
+frontend.pnp.js
 
 # testing
 frontend/coverage
@@ -74,27 +76,17 @@ frontend/coverage
 # production
 frontend/build
 
-# env files
-frontend/.env
+# misc
+frontend.DS_Store
+frontend.env.local
+frontend.env.development.local
+frontend.env.test.local
+frontend.env.production.local
 
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+
+# lock files
+frontend/package-lock.json
 frontend/yarn.lock
-frontend/package-*.json
-
-# VS Code files for those working on multiple tools
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
-# Local History for Visual Studio Code
-.history/
-
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
