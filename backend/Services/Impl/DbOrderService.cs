@@ -14,7 +14,7 @@ public class DbOrderService : DbCrudService<Order, OrderDTO>, IOrderService
     {
         return await _dbContext.Orders
             .AsNoTracking()
-            .Include(s => s.Products)
+            .Include(o => o.Products)
             .ToListAsync();
     }
     public override async Task<Order?> GetAsync(int id)

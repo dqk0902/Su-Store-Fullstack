@@ -40,6 +40,11 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
                     .WithMany(c => c.Products)
                     .HasForeignKey(p => p.CategoryId)
                     .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<Product>()
+                    .HasOne(p => p.Order)
+                    .WithMany(c => c.Products)
+                    .HasForeignKey(p => p.OrderId)
+                    .OnDelete(DeleteBehavior.Cascade);
         modelBuilder.AddIdentityConfig();
     }
 

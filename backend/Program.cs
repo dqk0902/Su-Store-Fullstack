@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         // Fix the JSON cycle issue
@@ -23,6 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<ICategoryService, DbCategoryService>();
 builder.Services.AddScoped<IProductService, DbProductService>();
+builder.Services.AddScoped<IOrderService, DbOrderService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 var app = builder.Build();

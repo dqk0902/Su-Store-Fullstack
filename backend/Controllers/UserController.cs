@@ -29,7 +29,9 @@ public class UserController : ApiControllerBase
     public async Task<IActionResult> GetAll()
     {
         var users = await _service.GetAllAsync();
-        return Ok(UserDTO.FromUsers(users));
+        var serviceProvider = HttpContext.RequestServices;
+        var userDTOs = UserDTO.FromUsers(users, serviceProvider);
+        return Ok(userDTOs);
     }
 
     [HttpGet("{id}")]
@@ -40,6 +42,8 @@ public class UserController : ApiControllerBase
         {
             return NotFound();
         }
-        return Ok(UserDTO.FromUser(user));
+        var serviceProvider = HttpContext.RequestServices;
+        var userDTO = await UserDTO.FromUser(user, serviceProvider);
+        return Ok(userDTO);
     }
 }

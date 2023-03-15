@@ -14,7 +14,7 @@ public class DbCategoryService : DbCrudService<Category, CategoryDTO>, ICategory
     {
         return await _dbContext.Categories
             .AsNoTracking()
-            .Include(s => s.Products)
+            .Include(c => c.Products)
             .ToListAsync();
     }
     public override async Task<Category?> GetAsync(int id)

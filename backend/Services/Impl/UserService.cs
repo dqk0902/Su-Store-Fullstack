@@ -49,8 +49,8 @@ public class UserService : IUserService
         await _roleService.CreateRolesAsync();
 
         // Assign roles to the user
-        var role = new[] { "Customer" };
-        await _userManager.AddToRolesAsync(user, role);
+
+        await _userManager.AddToRoleAsync(user, "Customer");
         return user;
     }
 }

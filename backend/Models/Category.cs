@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 namespace Ecommerce.Models;
 
 public class Category : BaseModel
@@ -9,6 +10,7 @@ public class Category : BaseModel
     public string? Image { get; set; }
 
     [NotMapped]
+    [JsonIgnore]
     public ICollection<Product> Products { get; set; } = null!;
 
 }
