@@ -14,6 +14,7 @@ public class DbProductService : DbCrudService<Product, ProductDTO>, IProductServ
     {
         return await _dbContext.Products
             .AsNoTracking()
+            .Include(p => p.Category)
             // Eager loading
             .Where(p => true)
             .OrderByDescending(p => p.CreatedAt)

@@ -27,7 +27,7 @@ const Register = () => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://api.escuelajs.co/api/v1/users/", {
+      const res = await axios.post("https://localhost:7064/users/signup", {
         email: register.email,
         password: register.password,
         name: register.name,

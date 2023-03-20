@@ -177,7 +177,7 @@ const Products = (props: any) => {
                   component="img"
                   alt="img not found"
                   height="140"
-                  image={product.images[0]}
+                  image={product.image}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">

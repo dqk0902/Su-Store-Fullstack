@@ -11,7 +11,6 @@ public class Product : BaseModel
     public string? Description { get; set; }
     public string? Image { get; set; }
     [NotMapped]
-    [JsonIgnore]
     public Category Category { get; set; } = null!;
     public int CategoryId { get; set; }
     [NotMapped]

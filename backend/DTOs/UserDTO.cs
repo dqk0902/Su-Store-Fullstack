@@ -8,8 +8,7 @@ namespace Ecommerce.DTOs
     public class UserDTO
     {
         public int Id { get; set; }
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public string UserName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Role { get; set; } = null!;
@@ -50,8 +49,7 @@ namespace Ecommerce.DTOs
             var userDTO = new UserDTO(serviceProvider)
             {
                 Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                Name = user.Name,
                 UserName = user.UserName,
                 Email = user.Email,
                 Role = await GetRoleAsync(user, serviceProvider)

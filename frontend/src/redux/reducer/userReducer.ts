@@ -4,14 +4,11 @@ import axios from "axios";
 export const getUserWithToken = createAsyncThunk(
   "getUserWithToken",
   async (token: string | null) => {
-    const response = await axios.get(
-      "https://api.escuelajs.co/api/v1/auth/profile",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.get("https://localhost:7064/users/profile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (response.status === 200) {
       return response.data;
     } else {

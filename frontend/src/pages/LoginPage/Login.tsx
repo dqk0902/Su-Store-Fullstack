@@ -26,18 +26,15 @@ const Login = () => {
   const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://api.escuelajs.co/api/v1/auth/login",
-        {
-          email: login.email,
-          password: login.password,
-        }
-      );
+      const res = await axios.post("https://localhost:7064/users/signin", {
+        email: login.email,
+        password: login.password,
+      });
       console.log(res.data);
       if (res.data) {
         nav("/products");
       }
-      localStorage.setItem("access_token", res.data.access_token);
+      localStorage.setItem("access_token", res.data.token);
       dispatch(getUserWithToken(localStorage.getItem("access_token")));
     } catch (e) {
       console.log(e);

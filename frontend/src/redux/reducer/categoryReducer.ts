@@ -8,9 +8,7 @@ export const fetchAllCategories = createAsyncThunk(
   "fetchAllCategories",
   async () => {
     try {
-      const categories = await axios.get(
-        "https://api.escuelajs.co/api/v1/categories"
-      );
+      const categories = await axios.get("https://localhost:7064/categories");
       return categories.data;
     } catch (error) {
       console.log(error);

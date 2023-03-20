@@ -4,17 +4,18 @@ using Ecommerce.Services;
 using Ecommerce.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Ecommerce.Models;
+
+[Authorize]
 public class UserController : ApiControllerBase
 {
     private readonly IUserService _service;
-    private readonly UserManager<User> _userManager;
-    public UserController(IUserService service, UserManager<User> userManager)
+
+    public UserController(IUserService service)
     {
         _service = service;
-        _userManager = userManager;
     }
+    [AllowAnonymous]
     [HttpPost("signup")]
     public async Task<IActionResult> SignUp(UserSignUpDTO request)
     {
@@ -25,6 +26,18 @@ public class UserController : ApiControllerBase
         }
         return Ok(UserSignUpResponseDTO.FromUser(user));
     }
+    [AllowAnonymous]
+    [HttpPost("signin")]
+    public async Task<IActionResult> SignIn(UserSignInDTO request)
+    {
+        var response = await _service.SignInAsync(request);
+        if (response is null)
+        {
+            return Unauthorized();
+        }
+        return Ok(response);
+    }
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -33,11 +46,24 @@ public class UserController : ApiControllerBase
         var userDTOs = UserDTO.FromUsers(users, serviceProvider);
         return Ok(userDTOs);
     }
-
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)
     {
         var user = await _service.GetAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        var serviceProvider = HttpContext.RequestServices;
+        var userDTO = await UserDTO.FromUser(user, serviceProvider);
+        return Ok(userDTO);
+    }
+    [HttpGet("profile")]
+    public async Task<IActionResult> GetUserProfile()
+    {
+        var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        var user = await _service.GetUserProfileAsync(token);
         if (user == null)
         {
             return NotFound();

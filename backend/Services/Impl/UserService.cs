@@ -1,6 +1,7 @@
 using Ecommerce.DTOs;
 using Ecommerce.Models;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
 namespace Ecommerce.Services;
 
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ public class UserService : IUserService
 {
     private readonly UserManager<User> _userManager;
     private readonly IRoleService _roleService;
-    public UserService(UserManager<User> userManager, IRoleService roleService)
+    private readonly ITokenService _tokenService;
+    public UserService(UserManager<User> userManager, IRoleService roleService, ITokenService tokenService)
     {
         _userManager = userManager;
         _roleService = roleService;
+        _tokenService = tokenService;
     }
 
     public async Task<ICollection<User>> GetAllAsync()
@@ -27,17 +30,38 @@ public class UserService : IUserService
         return await _userManager.FindByIdAsync(id.ToString());
     }
 
-    public Task<UserSignInResponseDTO?> SignInAsync(UserSignInDTO request)
+    public async Task<User?> GetUserProfileAsync(string token)
     {
-        throw new NotImplementedException();
+        var handler = new JwtSecurityTokenHandler();
+        var access_token = handler.ReadJwtToken(token);
+        var userId = access_token.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            throw new ArgumentException("Invalid token: missing sub claim");
+        }
+        return await _userManager.FindByIdAsync(userId);
     }
+
+    public async Task<UserSignInResponseDTO?> SignInAsync(UserSignInDTO request)
+    {
+        var user = await _userManager.FindByEmailAsync(request.Email);
+        if (user is null)
+        {
+            return null;
+        }
+        if (!await _userManager.CheckPasswordAsync(user, request.Password))
+        {
+            return null;
+        }
+        return await _tokenService.GenerateTokenAsync(user);
+    }
+
 
     public async Task<User?> SignUpAsync(UserSignUpDTO request)
     {
         var user = new User
         {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
+            Name = request.Name,
             UserName = request.Email,
             Email = request.Email,
         };

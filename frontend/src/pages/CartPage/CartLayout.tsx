@@ -43,7 +43,7 @@ const CartLayOut = (props: any) => {
                   component="img"
                   alt="img not found"
                   height="140"
-                  image={item.images[0]}
+                  image={item.image}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">

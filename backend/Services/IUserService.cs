@@ -11,4 +11,5 @@ public interface IUserService
 
     Task<User?> GetAsync(int id);
     Task<ICollection<User>> GetAllAsync();
+    Task<User?> GetUserProfileAsync(string token);
 }

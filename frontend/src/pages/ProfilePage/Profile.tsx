@@ -35,7 +35,7 @@ const Profile = () => {
     <div>
       <div className="flex flex-col items-center justify-center overflow-hidden mt-12">
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img className="w-full" src={users?.avatar} alt="user avatar" />
+          <img className="w-full" src={userState?.avatar} alt="user avatar" />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2 text-center uppercase">
               {users?.role}
