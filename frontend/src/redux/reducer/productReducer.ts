@@ -17,16 +17,17 @@ export const fetchAllProducts = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   "createProduct",
-  async (product: CreateProductType) => {
+  async (product: CreateProductType, { rejectWithValue }) => {
     try {
       const response: AxiosResponse<Product, Product> = await axios.post(
-        "https://api.escuelajs.co/api/v1/products/",
+        "https://localhost:7064/products",
         product
       );
       alert("Create Product successful");
       return response.data;
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Failed to create product.");
     }
   }
 );
@@ -36,7 +37,7 @@ export const updateProduct = createAsyncThunk(
   async (product: UpdateProduct) => {
     try {
       const response = await axios.put(
-        `https://api.escuelajs.co/api/v1/products/${product.id}`,
+        `https://localhost:7064/products/${product.id}`,
         product
       );
       return response.data;

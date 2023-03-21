@@ -15,7 +15,8 @@ export interface CreateProductType {
   description: string;
   price: number;
   categoryId: number;
-  images: string[];
+  image: string;
+  orderId: number;
 }
 export interface UpdateProduct {
   title: string;

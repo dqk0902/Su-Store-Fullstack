@@ -25,7 +25,7 @@ public class DbOrderService : DbCrudService<Order, OrderDTO>, IOrderService
             return null;
         }
         // Explicit loading
-        await _dbContext.Entry(order).Collection(c => c.Products).LoadAsync();
+        await _dbContext.Entry(order).Collection(o => o.Products).LoadAsync();
         return order;
     }
 }

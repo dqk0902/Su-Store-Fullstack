@@ -13,6 +13,7 @@ public class Order : BaseModel
     [NotMapped]
     [JsonIgnore]
     public ICollection<Product> Products { get; set; } = null!;
+
     public enum OrderStatus
     {
         Pending,

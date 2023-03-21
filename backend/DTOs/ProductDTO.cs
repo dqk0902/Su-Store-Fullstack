@@ -10,6 +10,7 @@ public class ProductDTO : BaseDTO<Product>
     public string? Description { get; set; }
     public string? Image { get; set; }
     public int CategoryId { get; set; }
+    public int OrderId { get; set; }
     public override void UpdateModel(Product model)
     {
         model.Title = Title;
@@ -17,5 +18,6 @@ public class ProductDTO : BaseDTO<Product>
         model.Description = Description;
         model.Image = Image;
         model.CategoryId = CategoryId;
+        model.OrderId = OrderId;
     }
 }

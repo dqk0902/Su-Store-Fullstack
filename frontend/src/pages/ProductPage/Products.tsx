@@ -176,7 +176,7 @@ const Products = (props: any) => {
                 <CardMedia
                   component="img"
                   alt="img not found"
-                  height="140"
+                  style={{ height: "150px" }}
                   image={product.image}
                 />
                 <CardContent>

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Box,
   Button,
   Card,
   CardContent,
@@ -42,7 +41,7 @@ const CartLayOut = (props: any) => {
                 <CardMedia
                   component="img"
                   alt="img not found"
-                  height="140"
+                  style={{ height: "150px" }}
                   image={item.image}
                 />
                 <CardContent>

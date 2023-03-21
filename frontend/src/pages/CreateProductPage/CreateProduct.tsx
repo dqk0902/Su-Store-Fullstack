@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch } from "../../hooks/reduxHook";
 import { createProduct } from "../../redux/reducer/productReducer";
 import { CreateProductType } from "../../types/product";
@@ -10,21 +10,20 @@ const CreateProduct = () => {
     description: "",
     price: 0,
     categoryId: 0,
-    images: [],
+    image: "",
+    orderId: 1,
   });
   const onChange = (e: any) => {
+    const value = e.target.value;
+    const name = e.target.name;
     setProduct((prev) => {
+      let updatedValue = value;
+      if (name === "categoryId" || name === "price") {
+        updatedValue = parseFloat(value);
+      }
       return {
         ...prev,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
-  const imagesChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setProduct((prev) => {
-      return {
-        ...prev,
-        [e.target.name]: [e.target.value],
+        [name]: updatedValue,
       };
     });
   };
@@ -32,6 +31,7 @@ const CreateProduct = () => {
   const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     dispatch(createProduct(product));
+    console.log(product);
   };
   return (
     <div>
@@ -89,9 +89,10 @@ const CreateProduct = () => {
                 Image link
               </label>
               <input
-                onChange={imagesChange}
+                onChange={onChange}
+                alt="Image not found"
                 type="images"
-                name="images"
+                name="image"
                 className="block w-full px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
