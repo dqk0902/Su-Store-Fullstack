@@ -5,13 +5,22 @@ import { updateProduct } from "../../redux/reducer/productReducer";
 import { useNavigate } from "react-router-dom";
 export interface IProps {
   productId: number;
+  productImage: string | undefined;
+  productCategoryId: number | undefined;
 }
-const EditProduct: React.FC<IProps> = ({ productId }) => {
+const EditProduct: React.FC<IProps> = ({
+  productId,
+  productCategoryId,
+  productImage,
+}) => {
   const dispatch = useAppDispatch();
   const [editProduct, setEditProduct] = useState<UpdateProduct>({
     title: "",
     description: "",
     price: 0,
+    categoryId: productCategoryId,
+    image: productImage,
+    orderId: 1,
     id: productId,
   });
 
@@ -69,7 +78,18 @@ const EditProduct: React.FC<IProps> = ({ productId }) => {
                 className="text xs block w-full h-32 px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-
+            <div className="mb-2">
+              <label className="block text-sm font-semibold text-gray-800">
+                Image
+              </label>
+              <input
+                alt=""
+                onChange={onChange}
+                type="images"
+                name="image"
+                className="text xs block w-full px-4 py-2 mt-2 text-pink-300 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
             <div className="mt-6">
               <button
                 onClick={onSubmit}

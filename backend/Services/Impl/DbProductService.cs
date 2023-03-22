@@ -33,4 +33,5 @@ public class DbProductService : DbCrudService<Product, ProductDTO>, IProductServ
         await _dbContext.Entry(product).Reference(p => p.Order).LoadAsync();
         return product;
     }
+
 }

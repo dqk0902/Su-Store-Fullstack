@@ -74,7 +74,14 @@ public class UserService : IUserService
 
         // Assign roles to the user
 
-        await _userManager.AddToRoleAsync(user, "Customer");
+        if (request.Email == "admin@gmail.com")
+        {
+            await _userManager.AddToRoleAsync(user, "Admin");
+        }
+        else
+        {
+            await _userManager.AddToRoleAsync(user, "Customer");
+        }
         return user;
     }
 }

@@ -20,8 +20,11 @@ export interface CreateProductType {
 }
 export interface UpdateProduct {
   title: string;
-  price: number;
   description: string;
+  price: number;
+  categoryId: number | undefined;
+  image: string | undefined;
+  orderId: number;
   id: number;
 }
 export type ProductId = number;

@@ -188,7 +188,7 @@ const Products = (props: any) => {
                     color="textSecondary"
                     component="div"
                   >
-                    <p>@{product.category.name}</p>
+                    <p>@{product?.category?.name}</p>
                   </Typography>
                   <Typography gutterBottom variant="h5" component="h2">
                     ${product.price}
@@ -196,7 +196,7 @@ const Products = (props: any) => {
                   <Button onClick={() => nav(`/products/${product.id}`)}>
                     Details
                   </Button>
-                  {isAdmin === "admin" && (
+                  {isAdmin === "Admin" && (
                     <Button onClick={() => dispatch(deleteItem(product.id))}>
                       Delete
                     </Button>

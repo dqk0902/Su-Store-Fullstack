@@ -6,11 +6,10 @@ export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
     try {
-      const jsondata = await fetch("https://localhost:7064/products");
-      const data: Product[] | Error = await jsondata.json();
-      return data;
-    } catch (e: any) {
-      console.log(e);
+      const products = await axios.get("https://localhost:7064/products");
+      return products.data;
+    } catch (error) {
+      console.log(error);
     }
   }
 );

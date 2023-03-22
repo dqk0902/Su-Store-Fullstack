@@ -34,7 +34,7 @@ const Register = () => {
         avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
       });
       console.log(res);
-      if (res.statusText === "Created") {
+      if (res.status === 200) {
         nav("/login");
         alert("Sign up succesfull");
       }

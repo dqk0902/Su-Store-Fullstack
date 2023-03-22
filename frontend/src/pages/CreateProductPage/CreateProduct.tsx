@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/reduxHook";
 import { createProduct } from "../../redux/reducer/productReducer";
 import { CreateProductType } from "../../types/product";
@@ -13,6 +14,8 @@ const CreateProduct = () => {
     image: "",
     orderId: 1,
   });
+  const nav = useNavigate();
+
   const onChange = (e: any) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -32,6 +35,7 @@ const CreateProduct = () => {
     e.preventDefault();
     dispatch(createProduct(product));
     console.log(product);
+    nav("/products");
   };
   return (
     <div>
