@@ -27,12 +27,15 @@ const Register = () => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://localhost:7064/users/signup", {
-        email: register.email,
-        password: register.password,
-        name: register.name,
-        avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-      });
+      const res = await axios.post(
+        "https://backend-fs13-dqk.azurewebsites.net/users/signup",
+        {
+          email: register.email,
+          password: register.password,
+          name: register.name,
+          avatar: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        }
+      );
       console.log(res);
       if (res.status === 200) {
         nav("/login");

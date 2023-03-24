@@ -6,7 +6,9 @@ export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
     try {
-      const products = await axios.get("https://localhost:7064/products");
+      const products = await axios.get(
+        "https://backend-fs13-dqk.azurewebsites.net/products"
+      );
       return products.data;
     } catch (error) {
       console.log(error);
@@ -19,7 +21,7 @@ export const createProduct = createAsyncThunk(
   async (product: CreateProductType, { rejectWithValue }) => {
     try {
       const response: AxiosResponse<Product, Product> = await axios.post(
-        "https://localhost:7064/products",
+        "https://backend-fs13-dqk.azurewebsites.net/products",
         product
       );
       alert("Create Product successful");
@@ -36,7 +38,7 @@ export const updateProduct = createAsyncThunk(
   async (product: UpdateProduct) => {
     try {
       const response = await axios.put(
-        `https://localhost:7064/products/${product.id}`,
+        `https://backend-fs13-dqk.azurewebsites.net/products/${product.id}`,
         product
       );
       return response.data;

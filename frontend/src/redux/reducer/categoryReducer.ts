@@ -8,7 +8,9 @@ export const fetchAllCategories = createAsyncThunk(
   "fetchAllCategories",
   async () => {
     try {
-      const categories = await axios.get("https://localhost:7064/categories");
+      const categories = await axios.get(
+        "https://backend-fs13-dqk.azurewebsites.net/categories"
+      );
       return categories.data;
     } catch (error) {
       console.log(error);

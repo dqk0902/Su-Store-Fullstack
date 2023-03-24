@@ -105,7 +105,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setCategoryId(1)}
+                      onClick={() => setCategoryId(2)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Clothes
@@ -115,7 +115,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setCategoryId(2)}
+                      onClick={() => setCategoryId(3)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Electronics
@@ -125,7 +125,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setCategoryId(3)}
+                      onClick={() => setCategoryId(4)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Funitures
@@ -135,7 +135,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setCategoryId(4)}
+                      onClick={() => setCategoryId(5)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Shoes
@@ -145,7 +145,7 @@ const Products = (props: any) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => setCategoryId(5)}
+                      onClick={() => setCategoryId(6)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Others

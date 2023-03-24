@@ -27,7 +27,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const singleProduct = async () => {
       try {
-        let url = `https://localhost:7064/products/${id}`;
+        let url = `https://backend-fs13-dqk.azurewebsites.net/products/${id}`;
         const res = await axios.get(url);
         setProduct(res.data);
       } catch (err) {

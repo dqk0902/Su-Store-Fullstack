@@ -12,6 +12,10 @@ using System.IdentityModel.Tokens.Jwt;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true;
+});
 builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services
@@ -24,7 +28,16 @@ builder.Services
     });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services
+    .AddIdentity<User, IdentityRole<int>>(options =>
+    {
+        options.Password.RequiredLength = 6;
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+    })
+    .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<ICategoryService, DbCategoryService>();
 builder.Services.AddScoped<IProductService, DbProductService>();
 builder.Services.AddScoped<IOrderService, DbOrderService>();
@@ -65,24 +78,19 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
-        var config = scope.ServiceProvider.GetService<IConfiguration>();
-
-        if (dbContext is not null && config.GetValue<bool>("CreateDbAtStart", false))
-        {
-            dbContext.Database.EnsureDeleted();
-            dbContext.Database.EnsureCreated();
-        }
-    }
 }
 
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo");
+            options.RoutePrefix = string.Empty;
+        });
 
 app.UseHttpsRedirection();
 

@@ -30,7 +30,7 @@ const Category = (props: any) => {
           justifyContent="center"
           alignItems="center"
         >
-          {categories.slice(0, 5).map((category) => (
+          {categories.slice(0, 6).map((category) => (
             <Grid key={category.id}>
               <Card className={classes.category}>
                 <CardMedia

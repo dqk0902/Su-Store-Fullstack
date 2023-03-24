@@ -26,10 +26,13 @@ const Login = () => {
   const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://localhost:7064/users/signin", {
-        email: login.email,
-        password: login.password,
-      });
+      const res = await axios.post(
+        "https://backend-fs13-dqk.azurewebsites.net/users/signin",
+        {
+          email: login.email,
+          password: login.password,
+        }
+      );
       console.log(res.data);
       if (res.data) {
         nav("/products");
