@@ -35,6 +35,7 @@ const Login = () => {
       );
       console.log(res.data);
       if (res.data) {
+        alert("Log in succesfull");
         nav("/products");
       }
       localStorage.setItem("access_token", res.data.token);
