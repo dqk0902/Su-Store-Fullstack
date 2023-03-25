@@ -12,9 +12,9 @@
 
 ## About:
 
-Create a fullstack e-commerce website 
+Create a fullstack e-commerce website allow user to use CRUD function with different roles and authentication. 
 
-You can take a look at the front-end deployed project here: (https://dqk-e-commerce.netlify.app/).
+You can take a look at the fullstack-project deployed project here: (https://su-store-dqk.netlify.app/).
 
 ## Steps to run the Code
 
