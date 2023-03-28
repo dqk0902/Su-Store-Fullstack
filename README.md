@@ -83,7 +83,7 @@ The response is an access JWT tokens and expiration, for example like this:
 
 Get user with session:
 [GET] https://localhost:7064/users/profile
-# Headers
+Headers
 {
   "Authorization": "Bearer {your access token}"
 }
