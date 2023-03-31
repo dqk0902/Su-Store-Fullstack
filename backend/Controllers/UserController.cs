@@ -37,7 +37,7 @@ public class UserController : ApiControllerBase
         }
         return Ok(response);
     }
-    [AllowAnonymous]
+    
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -46,7 +46,7 @@ public class UserController : ApiControllerBase
         var userDTOs = UserDTO.FromUsers(users, serviceProvider);
         return Ok(userDTOs);
     }
-    [AllowAnonymous]
+    
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)
     {

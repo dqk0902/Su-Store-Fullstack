@@ -4,17 +4,17 @@ import axios from "axios";
 export const getUserWithToken = createAsyncThunk(
   "getUserWithToken",
   async (token: string | null) => {
-    const response = await axios.get(
-      "https://backend-fs13-dqk.azurewebsites.net/users/profile",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    if (response.status === 200) {
+    try {
+      const response = await axios.get(
+        "https://backend-fs13-dqk.azurewebsites.net/users/profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
-    } else {
+    } catch (error) {
       return false;
     }
   }

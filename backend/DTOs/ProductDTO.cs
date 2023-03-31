@@ -10,6 +10,8 @@ public class ProductDTO : BaseDTO<Product>
     public string? Description { get; set; }
     public string? Image { get; set; }
     public int CategoryId { get; set; }
+    [NotMapped]
+    [JsonIgnore]
     public int OrderId { get; set; }
     public override void UpdateModel(Product model)
     {
