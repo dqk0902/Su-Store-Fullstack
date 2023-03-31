@@ -8,12 +8,12 @@ export const fetchAllCategories = createAsyncThunk(
   "fetchAllCategories",
   async () => {
     try {
-      const categories = await axios.get(
+      const categories = await axios.get<Category[]>(
         "https://backend-fs13-dqk.azurewebsites.net/categories"
       );
       return categories.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 );

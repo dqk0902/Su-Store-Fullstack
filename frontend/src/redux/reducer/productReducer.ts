@@ -6,12 +6,12 @@ export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
     try {
-      const products = await axios.get(
+      const products = await axios.get<Product[]>(
         "https://backend-fs13-dqk.azurewebsites.net/products"
       );
       return products.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 );

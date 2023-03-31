@@ -38,7 +38,6 @@ public class JwtTokenService : ITokenService
             claims.Add(new Claim(ClaimTypes.Role, role));
         }
 
-
         // Secret
         var secret = _config["Jwt:Secret"];
         var signingKey = new SigningCredentials(
