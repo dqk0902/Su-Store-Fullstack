@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 namespace Ecommerce.DTOs;
 
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Ecommerce.Models;
 
 public class ProductDTO : BaseDTO<Product>
