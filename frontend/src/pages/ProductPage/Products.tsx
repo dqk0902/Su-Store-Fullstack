@@ -41,12 +41,8 @@ const Products = (props: any) => {
       }
     })
   );
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 10000);
-  }, []);
+
+  const isLoading = products.length === 0;
 
   const [isAdmin, setIsAdmin] = useState("");
   const userState = {
