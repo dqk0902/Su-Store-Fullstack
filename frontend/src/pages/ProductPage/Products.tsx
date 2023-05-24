@@ -45,7 +45,7 @@ const Products = (props: any) => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 7000);
+    }, 10000);
   }, []);
 
   const [isAdmin, setIsAdmin] = useState("");
