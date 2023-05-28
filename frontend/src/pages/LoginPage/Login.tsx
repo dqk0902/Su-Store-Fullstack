@@ -35,13 +35,18 @@ const Login = () => {
       );
       console.log(res.data);
       if (res.data) {
-        alert("Log in succesfull");
+        alert("Log in successful");
         nav("/products");
       }
       localStorage.setItem("access_token", res.data.token);
       dispatch(getUserWithToken(localStorage.getItem("access_token")));
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        setLogin({ email: "", password: "" });
+        alert("Invalid email or password. Please try again.");
+      } else {
+        console.log(error);
+      }
     }
   };
   const onNavigate = () => {

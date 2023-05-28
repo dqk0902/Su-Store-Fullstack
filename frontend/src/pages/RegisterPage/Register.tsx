@@ -41,8 +41,12 @@ const Register = () => {
         nav("/login");
         alert("Sign up succesfull");
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert("Invalid email or password. Please try again.");
+      } else {
+        console.log(error);
+      }
     }
   };
   return (
