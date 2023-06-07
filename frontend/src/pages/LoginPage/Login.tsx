@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAppDispatch } from "../../hooks/reduxHook";
 import { useNavigate } from "react-router-dom";
 import { getUserWithToken } from "../../redux/reducer/userReducer";
-
+import "../../styles/Theme.css";
 export interface LoginType {
   email: string;
   password: string;
@@ -52,6 +52,7 @@ const Login = () => {
   const onNavigate = () => {
     nav("/register");
   };
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center overflow-hidden mt-12">

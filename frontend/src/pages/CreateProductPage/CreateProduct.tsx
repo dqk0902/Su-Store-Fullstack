@@ -31,11 +31,23 @@ const CreateProduct = () => {
     });
   };
 
-  const onSubmit = async (e: React.MouseEvent<HTMLElement>) => {
+  const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    dispatch(createProduct(product));
-    console.log(product);
-    nav("/products");
+    const res = await dispatch(createProduct(product));
+    setProduct({
+      title: "",
+      description: "",
+      price: 0,
+      categoryId: 0,
+      image: "",
+      orderId: 1,
+    });
+    console.log(res);
+    if (res.payload === "Create Product successful") {
+      alert("Product created successfully!");
+      nav("/products");
+    }
+    alert("Failed to create product. Please try again.");
   };
   return (
     <div>

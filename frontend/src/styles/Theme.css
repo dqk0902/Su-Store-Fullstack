@@ -1,0 +1,9 @@
+.dark-theme {
+  background-color: #0f0108;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+}
+.dark-theme body {
+  background-color: #46353e;
+  color: #fff;
+}

@@ -34,10 +34,10 @@ const Profile = () => {
   return (
     <div>
       <div className="flex flex-col items-center justify-center overflow-hidden mt-12">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
           <img className="w-full" src={userState?.avatar} alt="user avatar" />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2 text-center uppercase">
+            <div className="font-bold text-xl text-gray-700 mb-2 text-center uppercase ">
               {users?.role}
             </div>
             <p className="text-gray-700 text-center uppercase">{users?.name}</p>

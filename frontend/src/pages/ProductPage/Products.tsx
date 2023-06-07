@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Button, Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material";
@@ -16,6 +16,7 @@ import Category from "./Category/Category";
 import Sort from "./Sorting/Sort";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
