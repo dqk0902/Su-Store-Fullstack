@@ -1,21 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
 import { Button, Card } from "@mui/material";
-import { CardContent } from "@mui/material";
-import { Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import { CardMedia } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
+import { Container, Grid } from "@mui/material";
+import { Menu, Transition } from "@headlessui/react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   deleteItem,
   fetchAllProducts,
 } from "../../redux/reducer/productReducer";
-import { Container, Grid } from "@mui/material";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
+
+import { CardContent } from "@mui/material";
+import { CardMedia } from "@mui/material";
 import Category from "./Category/Category";
-import Sort from "./Sorting/Sort";
-import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import { Fragment } from "react";
+import Sort from "./Sorting/Sort";
+import { Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -43,7 +44,7 @@ const Products = (props: any) => {
     })
   );
 
-  const isLoading = products.length === 0;
+  const isLoading = products.length === 0 && search.length === 0;
 
   const [isAdmin, setIsAdmin] = useState("");
   const userState = {
